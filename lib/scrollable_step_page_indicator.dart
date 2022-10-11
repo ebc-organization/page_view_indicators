@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ScrollableStepPageIndicator extends StatefulWidget {
+class StepPageIndicator extends StatefulWidget {
   static const double _defaultSize = 8.0;
   static const double _defaultSpacing = 8.0;
   static const Color _defaultStepColor = Colors.green;
@@ -34,7 +34,7 @@ class ScrollableStepPageIndicator extends StatefulWidget {
   /// as per the width of indicators you gave
   final double animationOffset;
 
-  const ScrollableStepPageIndicator({
+  const StepPageIndicator({
     Key? key,
     required this.currentPageNotifier,
     required this.itemCount,
@@ -49,12 +49,12 @@ class ScrollableStepPageIndicator extends StatefulWidget {
         super(key: key);
 
   @override
-  _ScrollableStepPageIndicatorState createState() {
-    return _ScrollableStepPageIndicatorState();
+  _StepPageIndicatorState createState() {
+    return _StepPageIndicatorState();
   }
 }
 
-class _ScrollableStepPageIndicatorState extends State<ScrollableStepPageIndicator> {
+class _StepPageIndicatorState extends State<StepPageIndicator> {
   int _currentPageIndex = 0;
 
   ScrollController scrollController = ScrollController();
