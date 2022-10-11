@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StepPageIndicator extends StatefulWidget {
+class StepPageIndicatorScrollable extends StatefulWidget {
   static const double _defaultSize = 8.0;
   static const double _defaultSpacing = 8.0;
   static const Color _defaultStepColor = Colors.green;
@@ -34,7 +34,7 @@ class StepPageIndicator extends StatefulWidget {
   /// as per the width of indicators you gave
   final double animationOffset;
 
-  const StepPageIndicator({
+  const StepPageIndicatorScrollable({
     Key? key,
     required this.currentPageNotifier,
     required this.itemCount,
@@ -43,18 +43,20 @@ class StepPageIndicator extends StatefulWidget {
     Color? stepColor,
     this.previousStep,
     this.selectedStep,
-    this.nextStep, required this.animationOffset,
+    this.nextStep,
+    required this.animationOffset,
   })  : this.stepColor = stepColor ?? _defaultStepColor,
         assert(height >= 0, "size must be a positive number"),
         super(key: key);
 
   @override
-  _StepPageIndicatorState createState() {
-    return _StepPageIndicatorState();
+  _StepPageIndicatorStateScrollable createState() {
+    return _StepPageIndicatorStateScrollable();
   }
 }
 
-class _StepPageIndicatorState extends State<StepPageIndicator> {
+class _StepPageIndicatorStateScrollable
+    extends State<StepPageIndicatorScrollable> {
   int _currentPageIndex = 0;
 
   ScrollController scrollController = ScrollController();
@@ -81,7 +83,6 @@ class _StepPageIndicatorState extends State<StepPageIndicator> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: widget.height,
-
       child: Center(
         child: ListView.separated(
           controller: scrollController,
@@ -122,7 +123,7 @@ class _StepPageIndicatorState extends State<StepPageIndicator> {
       return widget.previousStep ??
           Container(
             width: widget.height,
-            height: widget.height ,
+            height: widget.height,
             decoration: BoxDecoration(
                 color: Colors.transparent,
                 shape: BoxShape.circle,
